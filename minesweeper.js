@@ -7,7 +7,7 @@ var board = {
   {
     row: 0,
     col: 0,
-    isMine: true,
+    isMine: false,
     hidden: true
   }, 
   {
@@ -25,7 +25,7 @@ var board = {
   {
     row: 1,
     col: 0,
-    isMine: true,
+    isMine: false,
     hidden: true
   }, 
   {
@@ -55,13 +55,23 @@ var board = {
   {
     row: 2,
     col: 2,
-    isMine: true,
+    isMine: false,
     hidden: true
   }
 ]
 }
 
+function randomNumberMines() {
+  var random = Math.floor(Math.random() * board.cells.length)
+  board.cells[random].isMine = true
+  random = Math.floor(Math.random() * board.cells.length)
+  board.cells[random].isMine = true
+  random = Math.floor(Math.random() * board.cells.length)
+  board.cells[random].isMine = true
+}
+
 function startGame () {
+  randomNumberMines()
   // Don't remove this function call: it makes the game work!
 for (var a=0; a < board.cells.length; a++){
   board.cells[a].surroundingMines=countSurroundingMines(board.cells[a])
